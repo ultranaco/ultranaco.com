@@ -1,5 +1,14 @@
 "use strict";
 
+var pageEl = document.querySelector('#page');
+var introEl = document.querySelector('#intro');
+var stripesEl = document.querySelector('#stripes');
+var logoContainer = document.querySelector('#logo-container');
+var logo = logoContainer.querySelector('svg');
+var logoPath = logo.querySelector('path');
+var windowWidth = document.body.clientWidth;
+var windowHeight = document.body.clientHeight;
+
 function createEl(template) {
   var el = document.createElement('div');
   el.innerHTML = template.trim();
@@ -19,15 +28,6 @@ function createLine(options) {
   var el = createSvgChildEl('\n    <rect x="' + options.x + '" y="' + options.y + '" width="' + options.width + '" height="' + options.height + '" fill="' + options.color + '">\n  ');
   return el;
 }
-
-var pageEl = document.querySelector('#page');
-var introEl = document.querySelector('#intro');
-var stripesEl = document.querySelector('#stripes');
-var logoContainer = document.querySelector('#logo-container');
-var logo = logoContainer.querySelector('svg');
-var logoPath = logo.querySelector('path');
-var windowWidth = document.body.clientWidth;
-var windowHeight = document.body.clientHeight;
 
 // animate stripes
 function _animateStripes(container) {
@@ -125,6 +125,7 @@ function animateBlackStripes(container) {
   };
   _animateStripes(container, options);
 }
+
 function animateColoredStripes(container) {
   var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
@@ -303,115 +304,6 @@ function showContent() {
     }
   }, maxDelay);
 }
-
-// intro
-(function () {
-  animateBlackStripes(stripesEl, {
-    count: 200
-  });
-  animateColoredStripes(stripesEl, {
-    count: 100
-  });
-
-  dynamics.css(pageEl, {
-    scale: 0.95
-  });
-  dynamics.animate(pageEl, {
-    scale: 1
-  }, {
-    type: dynamics.easeInOut,
-    friction: 500,
-    duration: 4000
-  });
-
-  dynamics.css(logo, {
-    scale: 1
-  });
-  dynamics.animate(logo, {
-    scale: 0.90
-  }, {
-    duration: 1500,
-    type: dynamics.easeOut
-  });
-
-  var color = tinycolor('hsl(' + Math.round(Math.random() * 360) + ', 80%, 65%)');
-  dynamics.animate(logoPath, {
-    fill: color.toRgbString()
-  }, {
-    duration: 700
-  });
-
-  color = tinycolor('hsl(' + Math.round(Math.random() * 360) + ', 80%, 65%)');
-  dynamics.animate(logoPath, {
-    fill: color.toRgbString()
-  }, {
-    duration: 700,
-    delay: 700
-  });
-
-  function animateLogo() {
-    dynamics.css(logoContainer, {
-      scale: 0.5,
-      translateX: Math.random() * 100 - 50
-    });
-
-    dynamics.setTimeout(function () {
-      dynamics.css(logoContainer, {
-        translateX: 10,
-        scale: 0.55
-      });
-    }, 100);
-
-    dynamics.setTimeout(function () {
-      dynamics.css(logoContainer, {
-        translateX: 0,
-        scale: 0.5
-      });
-    }, 150);
-  };
-
-  animateLogo();
-
-  dynamics.setTimeout(function () {
-    logoContainer.style.visibility = 'visible';
-  }, 1);
-
-  dynamics.setTimeout(function () {
-    animateLogo();
-    animateBlackStripes(stripesEl, {
-      count: 200,
-      delayShow: true
-    });
-    animateColoredStripes(stripesEl, {
-      count: 100
-    });
-  }, 1000);
-
-  dynamics.setTimeout(function () {
-    introEl.style.backgroundColor = 'transparent';
-    dynamics.css(logoContainer, {
-      scale: 1,
-      translateX: Math.random() * windowWidth - windowWidth / 2,
-      translateY: Math.random() * windowHeight - windowHeight / 2
-    });
-    showContent();
-  }, 1300);
-
-  dynamics.setTimeout(function () {
-    dynamics.css(logoContainer, {
-      scale: 0.75
-    });
-  }, 1350);
-
-  dynamics.setTimeout(function () {
-    logo.style.display = 'none';
-  }, 1400);
-
-  dynamics.setTimeout(function () {
-    document.body.removeChild(introEl);
-  }, 3000);
-})();
-
 // page
 (function () {
   var pageStripesEl = document.querySelector('#page-stripes');
