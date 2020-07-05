@@ -7,37 +7,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    <title>Ultranaco Labs | Sharing knwoledge to control complexity</title>
+    
 
-<meta property="og:title" content="Ultranaco Labs">
+
+
+
+
+
+
+<title>Mockat</title>
+<meta property="og:title" content="Mockat">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<meta property="og:description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<link rel="canonical" href="Ultranaco Labs">
-<meta property="og:url" content="https://ultranaco.com">
+<meta name="description" content="Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root
+">
+<meta property="og:description" content="Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root
+">
+<link rel="canonical" href="https://ultranaco.com/briefcase/mockat">
+<meta property="og:url" content="https://ultranaco.com/briefcase/mockat">
 <meta property="og:site_name" content="Ultranaco Labs">
-<meta property=”og:image” content=”https://ultranaco.com/assets/images/cover_ultranaco.png” />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover_ultranaco.png" />
 
-<script type="application/ld+json">
-  {
-    "@type":"WebSite",
-    "url":"https://ultranaco.com",
-    "headline":"Ultranaco Labs",
-    "description":"Ultranaco is a personal website with tools, tips and tricks to make software more less effective",
-    "name":"Ultranaco Labs",
-    "sameAs": [
-      "https://facebook.com/ultranaco",
-      "https://github.com/ultranaco",
-      "https://twitter.com/ultranacomx"
-      ],
-    "@context":"https://schema.org"
-  }
-</script>
-
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "TechArticle"
+      "author": "Alejandro Piña",
+      "datePublished": "11 May 2020",
+      "dateModified": "11 May 2020",
+      "headline": "Mockat",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover_ultranaco.png",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
   
   <meta property="og:site_name" content="Ultranaco Labs">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://ultranaco.com/">
+  <link rel="canonical" href="https://ultranaco.com/briefcase/mockat">
   <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
@@ -63,7 +80,7 @@
   
   <div class="trigger">
   <a href="/briefcase" 
-  class="page-link " >
+  class="page-link page-link-current" >
     Briefcase
   </a>
 </div>
@@ -90,33 +107,59 @@
     <div class="wrapper">
       <div class="content">
         
-        <h1 id="ultranaco-labs">Ultranaco Labs</h1>
-
-<h2 id="latest-documents">Latest Documents</h2>
-
-<ul class="post-list">  
+        <h1>Mockat</h1>
+<p>
+  11 May 2020
   
-  <li>
-    <span class="post-meta">04 Jul 2020</span>
-    <h3><a class="post-link" href="/miscellaneous/man-in-the-proxy">Man In The Proxy</a></h3>
-    <p>I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique would be called Man in The Proxy from Man in The Middle technique but on a global scale</p>
-
-  </li>
   
-</ul>
-
-<h2 id="latest-projects">Latest Projects</h2>
-
-<ul class="post-list">  
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
   
-  <li>
-    <span class="post-meta">11 May 2020</span>
-    <h3><a class="post-link" href="/briefcase/mockat">Mockat</a></h3>
-    <p>Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root</p>
+</p>
 
-  </li>
-  
-</ul>
+<p>Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root</p>
+
+<h2 id="install">Install:</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ go install github.com/ultranaco/mockcat
+</code></pre></div></div>
+
+<h2 id="usage">Usage:</h2>
+
+<p>With the given file <code class="highlighter-rouge">collection-item.json</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{
+  "id": 1,
+  "url": "foo"
+},
+{
+  "id": 2,
+  "url": "bar"
+}]
+</code></pre></div></div>
+
+<p><em>bash</em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mockcat collection-item.json
+</code></pre></div></div>
+
+<p>Generates a simple http server to make CRUD requests <code class="highlighter-rouge">http://localhost:8080/collection/item/</code> or <code class="highlighter-rouge">http://localhost:8080/collection/item/{id}</code></p>
+
+<p><code class="highlighter-rouge">{id}</code> is default root property in a JSON file that contains an array, default property can be changed with the optional parameter property-matcher <code class="highlighter-rouge">-m url</code></p>
+
+<h2 id="options">Options:</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-m   :property-matcher used to retrieve an item from an array of elements through some root property, default id
+-p   :port to listen incoming requests, default 8080
+</code></pre></div></div>
+
+<h2 id="example">Example:</h2>
+
+<p>The following command listen incoming request at port <code class="highlighter-rouge">8082</code> and property-matcher is changed to seek items by <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">http://localhost:8082/collection/item/{url}</code> or retrive all collection <code class="highlighter-rouge">http://localhost:8082/collection/item/</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mockcat collection-item.json -p 8082 -m url
+</code></pre></div></div>
+
+
 
 
       </div>

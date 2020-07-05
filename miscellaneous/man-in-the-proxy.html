@@ -7,37 +7,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    <title>Ultranaco Labs | Sharing knwoledge to control complexity</title>
+    
 
-<meta property="og:title" content="Ultranaco Labs">
+
+
+
+
+
+
+<title>Man In The Proxy</title>
+<meta property="og:title" content="Man In The Proxy">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<meta property="og:description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<link rel="canonical" href="Ultranaco Labs">
-<meta property="og:url" content="https://ultranaco.com">
+<meta name="description" content="I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique would be called Man in The Proxy from Man in The Middle technique but on a global scale
+">
+<meta property="og:description" content="I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique would be called Man in The Proxy from Man in The Middle technique but on a global scale
+">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/man-in-the-proxy">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/man-in-the-proxy">
 <meta property="og:site_name" content="Ultranaco Labs">
-<meta property=”og:image” content=”https://ultranaco.com/assets/images/cover_ultranaco.png” />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/man-in-the-proxy.png" />
 
-<script type="application/ld+json">
-  {
-    "@type":"WebSite",
-    "url":"https://ultranaco.com",
-    "headline":"Ultranaco Labs",
-    "description":"Ultranaco is a personal website with tools, tips and tricks to make software more less effective",
-    "name":"Ultranaco Labs",
-    "sameAs": [
-      "https://facebook.com/ultranaco",
-      "https://github.com/ultranaco",
-      "https://twitter.com/ultranacomx"
-      ],
-    "@context":"https://schema.org"
-  }
-</script>
-
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "BlogPosting"
+      "author": "Alejandro Piña",
+      "datePublished": "04 Jul 2020",
+      "dateModified": "04 Jul 2020",
+      "headline": "Man In The Proxy",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover/man-in-the-proxy.png",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
   
   <meta property="og:site_name" content="Ultranaco Labs">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://ultranaco.com/">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/man-in-the-proxy">
   <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
@@ -70,7 +87,7 @@
   
   <div class="trigger">
   <a href="/miscellaneous" 
-  class="page-link " >
+  class="page-link page-link-current" >
     Miscellaneous
   </a>
 </div>
@@ -90,33 +107,37 @@
     <div class="wrapper">
       <div class="content">
         
-        <h1 id="ultranaco-labs">Ultranaco Labs</h1>
-
-<h2 id="latest-documents">Latest Documents</h2>
-
-<ul class="post-list">  
+        <h1>Man In The Proxy</h1>
+<p>
+  04 Jul 2020
   
-  <li>
-    <span class="post-meta">04 Jul 2020</span>
-    <h3><a class="post-link" href="/miscellaneous/man-in-the-proxy">Man In The Proxy</a></h3>
-    <p>I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique would be called Man in The Proxy from Man in The Middle technique but on a global scale</p>
-
-  </li>
   
-</ul>
-
-<h2 id="latest-projects">Latest Projects</h2>
-
-<ul class="post-list">  
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
   
-  <li>
-    <span class="post-meta">11 May 2020</span>
-    <h3><a class="post-link" href="/briefcase/mockat">Mockat</a></h3>
-    <p>Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root</p>
+</p>
 
-  </li>
-  
-</ul>
+<p>I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique would be called Man in The Proxy from Man in The Middle technique but on a global scale</p>
+
+<p>In this first delivery of the Man in The Proxy series I’ll limit myself to explain the theorical operation in a second part we will put it into practice.</p>
+
+<h2 id="what-is-man-in-the-proxy">What is Man in The Proxy?</h2>
+
+<p>Maybe you heard that the best way to search through internet anonymously is to connect your browser, computer or modem to a proxy server, on the way you found hundreds of sites where good Samaritans shared their proxy servers with IP addresses and ports so that you can browse in a safe and anonymous way</p>
+
+<p>The idea of a proxy server is that it make requests on your behalf and if it also offers you its anonymity service, it deletes client IP address, many people use this type of service to access content restricted by country just for mentioning a common prupose. I hope that at the end of this article you think the risk to connect a proxy server to browser</p>
+
+<p>The basic form of the Man in The Proxy technique is that when the client sends a request through the intermediary(proxy server), the intermediary manipulates the response of the web site, altering its content.</p>
+
+<h2 id="cherry-on-the-cake">Cherry on the cake</h2>
+
+<p>At this point is when things can start to get out of hand, and I’ll say it as a big question.</p>
+
+<p>What happens if we mount a proxy server, perhaps in Apache, IIS, Nginx, also if we invent a middleware capable of itercept requests for javascript files and that these files are manipulated before being delivered to the client injecting a code snippet which will be executed once it renderized by the browser client also with a cache expiration for the next five years and this code snippet is able to maintain a connection to a server waiting for instructions, when was the last time you cleared the cache?</p>
+
+<p>We have created a <code class="highlighter-rouge">botnet</code> on a global scale</p>
+
+<p>Soon the source code… to be contiune</p>
+
 
 
       </div>
