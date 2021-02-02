@@ -1,0 +1,284 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/assets/images/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    
+
+
+
+
+
+
+
+<title>Setting Up Local Environment Angular Nginx</title>
+<meta property="og:title" content="Setting Up Local Environment Angular Nginx">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Configure an Angular application with custom domain to dev environment, it is useful for configure Google Tag Manager or Google Analytics, testing events or tags before to spread on production environment, just for mention the most valuable thing for me, surely you will find other advantages
+">
+<meta property="og:description" content="Configure an Angular application with custom domain to dev environment, it is useful for configure Google Tag Manager or Google Analytics, testing events or tags before to spread on production environment, just for mention the most valuable thing for me, surely you will find other advantages
+">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/setting-up-local-environment-angular-nginx">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/setting-up-local-environment-angular-nginx">
+<meta property="og:site_name" content="Ultranaco Labs">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/angular-dev.png" />
+
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "author": "Alejandro Piña",
+      "datePublished": "01 Feb 2021",
+      "dateModified": "01 Feb 2021",
+      "headline": "Setting Up Local Environment Angular Nginx",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover/angular-dev.png",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
+  
+  <meta property="og:site_name" content="Ultranaco Labs">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/setting-up-local-environment-angular-nginx">
+  <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body cz-shortcut-listen="true">
+  <header id="header-content" class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" rel="author" href="/">
+        <img class="logo-ultranaco" src="/assets/images/logo_ultranaco.png" alt="">
+      </a>
+      <nav class="site-nav">
+  <input type="checkbox" id="nav-trigger" class="nav-trigger">
+  <label for="nav-trigger">
+    <span class="menu-icon">
+      <svg viewBox="0 0 18 15" width="18px" height="15px">
+        <path
+          d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z">
+        </path>
+      </svg>
+    </span>
+  </label>
+
+  
+  <div class="trigger">
+  <a href="/briefcase" 
+  class="page-link " >
+    Briefcase
+  </a>
+</div>
+  
+  <div class="trigger">
+  <a href="/miscellaneous" 
+  class="page-link page-link-current" >
+    Miscellaneous
+  </a>
+</div>
+  
+  <div class="trigger">
+  <a href="/about" 
+  class="page-link " >
+    About
+  </a>
+</div>
+  
+</nav>
+
+    </div>
+  </header>
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="content">
+        
+        <h1>Setting Up Local Environment Angular Nginx</h1>
+<p>
+  01 Feb 2021
+  
+  
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
+  
+</p>
+
+<p>Configure an Angular application with custom domain to dev environment, it is useful for configure Google Tag Manager or Google Analytics, testing events or tags before to spread on production environment, just for mention the most valuable thing for me, surely you will find other advantages</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Install <code class="highlighter-rouge">angular-cli</code></li>
+  <li>Install <code class="highlighter-rouge">nginx</code></li>
+  <li>Install VS Code extension <code class="highlighter-rouge">Debugger for Chrome</code></li>
+</ul>
+
+<h2 id="creating-angular-application-and-run">Creating angular application and run</h2>
+
+<p>In terminal execute the following comands to raise default angular application with custom domain and port</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ng new <span class="o">[</span>my-project]
+ng serve <span class="nt">--host</span> local.sudoku.ultranaco.com <span class="nt">--port</span> 4200
+</code></pre></div></div>
+
+<p><strong>Note:</strong> to make searcheable in browser(Chrome, Edge, Firefox, …) append your custom domain in file <code class="highlighter-rouge">/etc/hosts</code> if you are using WSL2 add in <code class="highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code></p>
+
+<h2 id="configuring-site-in-nginx">Configuring site in Nginx</h2>
+
+<p><code class="highlighter-rouge">/etc/nginx/sites-available/local.sudoku.ultranaco.com</code></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream sudoku <span class="o">{</span>
+  <span class="c">#Listen when 'ng serve' command is running</span>
+  server local.sudoku.ultranaco.com:8081<span class="p">;</span>
+  <span class="c"># Default last angular compilation files</span>
+  server local.sudoku.ultranaco.com:8082 backup<span class="p">;</span>
+<span class="o">}</span>
+
+server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  server_name local.sudoku.ultranaco.com<span class="p">;</span>
+  
+  proxy_next_upstream invalid_header http_500 http_502 http_504 http_403<span class="p">;</span>
+
+  location / <span class="o">{</span>
+      proxy_pass http://sudoku<span class="p">;</span>
+      <span class="c"># websocket headers to real time changes</span>
+      proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+      proxy_set_header Connection <span class="s1">'upgrade'</span><span class="p">;</span>
+      proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+      proxy_http_version 1.1<span class="p">;</span>
+      proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+    <span class="o">}</span> 
+<span class="o">}</span>
+
+<span class="c"># Listen when 'ng serve' command is running</span>
+server <span class="o">{</span>
+  listen 8081<span class="p">;</span>
+  server_name local.sudoku.ultranaco.com<span class="p">;</span>
+  
+  location / <span class="o">{</span>
+    proxy_pass http://local.sudoku.ultranaco.com:4200<span class="p">;</span>
+    <span class="c"># websocket headers to real time changes</span>
+    proxy_set_header Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+    proxy_set_header Connection <span class="s1">'upgrade'</span><span class="p">;</span>
+    proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+    proxy_http_version 1.1<span class="p">;</span>
+    proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c"># Listen compiled files when 'ng serve' command is´nt running</span>
+server <span class="o">{</span>
+  listen 8082<span class="p">;</span>
+  server_name local.sudoku.ultranaco.com<span class="p">;</span>
+
+  root ~/my-project/dist/angular<span class="p">;</span>
+  index index.html<span class="p">;</span>
+  
+  location / <span class="o">{</span>
+    try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ <span class="nv">$uri</span>.html <span class="o">=</span>404<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Make sure that this configuration has a <code class="highlighter-rouge">symlink</code> in <code class="highlighter-rouge">/etc/nginx/sites-enabled/local.sudoku.ultranaco.com</code></p>
+
+<p>Restart <strong>nginx</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service nginx restart
+</code></pre></div></div>
+
+<p>Optional you can <a href="/miscellaneous/selfsigned-certificate-in-wsl2-linux-nginx">configure a self-signed certificate to server over 443 port SSL</a></p>
+
+<h2 id="debugging-angular-in-vscode-with-wsl2">Debugging Angular in VSCode with WSL2</h2>
+
+<p><code class="highlighter-rouge">~/my-project/.vscode/launch.json</code></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chrome"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch Chrome My-Project"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://local.sudoku.ultranaco.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"webRoot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/my-project"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userDataDir"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Press <code class="highlighter-rouge">F5</code> to launch debugger for chrome</p>
+
+<p><img src="/assets/images/misc/angulardebug.png" alt="Debug angular in VS Code" title="Debug angular in VS Code" /></p>
+
+<p>Enjoy it, doggy!</p>
+
+
+
+      </div>
+
+    </div>
+  </main>
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+
+    <div class="wrapper">
+
+      <h2 class="footer-heading">Ultranaco Labs</h2>
+
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Ultranaco Labs</li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col-2">
+          <ul class="social-media-list">
+            <li><a target="_blank" href="https://github.com/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#github"></use>
+                </svg> <span class="username">ultranaco</span></a></li>
+            <li><a target="_blank" href="https://twitter.com/ultranacomx"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#twitter"></use>
+                </svg> <span class="username">ultranacomx</span></a></li>
+            <li><a target="_blank" href="https://facebook.com/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#facebook"></use>
+                </svg> <span class="username">@ultranaco</span></a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#linkedin"></use>
+                </svg> <span class="username">ultranaco</span></a></li>
+            <li><a target="_blank" href="https://npmjs.com/~ultranaco">
+              <img class="svg-icon" src="/assets/images/npm.jpg">
+              <span class="username">~ultranaco</span></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-col-3">
+          <p>Sharing knwoledge to control complexity</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3S9D4J');</script>
+  <!-- End Google Tag Manager -->
+
+</body>
+</html>
