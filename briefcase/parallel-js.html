@@ -62,6 +62,7 @@
   
 </head>
 <body cz-shortcut-listen="true">
+  
   <header id="header-content" class="site-header" role="banner">
     <div class="wrapper">
       <a class="site-title" rel="author" href="/">
@@ -118,7 +119,7 @@
   
 </p>
 
-<p><code class="highlighter-rouge">Parallel</code> is a Node.js library to spread concurrent task or promises, with deggree concurrency</p>
+<p><code class="language-plaintext highlighter-rouge">Parallel</code> is a Node.js library to spread concurrent task or promises, with deggree concurrency</p>
 
 <h2 id="install">Install</h2>
 
@@ -127,7 +128,7 @@
 
 <h2 id="how-it-works">How it works</h2>
 
-<p>The example code below invokes 10 “heavy workloads” and execute 3 tasks simultaneously, <code class="highlighter-rouge">Parallel</code> doesn’t enqueue tasks to avoid memory leaks rather lock the main execution until one task is released and next task get into execution process.</p>
+<p>The example code below invokes 10 “heavy workloads” and execute 3 tasks simultaneously, <code class="language-plaintext highlighter-rouge">Parallel</code> doesn’t enqueue tasks to avoid memory leaks rather lock the main execution until one task is released and next task get into execution process.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Parallel</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@ultranaco/parallel</span><span class="dl">'</span><span class="p">;</span>
@@ -145,7 +146,7 @@
   <span class="nx">expect</span><span class="p">(</span><span class="nx">parallel</span><span class="p">.</span><span class="nx">tasks</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kd">function</span> <span class="nx">heavyWork</span><span class="p">(</span><span class="na">index</span><span class="p">:</span> <span class="nb">Number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">{</span>
+<span class="kd">function</span> <span class="nx">heavyWork</span><span class="p">(</span><span class="nx">index</span><span class="p">:</span> <span class="nb">Number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
     <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">timeout</span> <span class="o">-</span> <span class="mi">100</span><span class="p">;</span>
 

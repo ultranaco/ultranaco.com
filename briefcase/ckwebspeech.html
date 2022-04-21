@@ -62,6 +62,7 @@
   
 </head>
 <body cz-shortcut-listen="true">
+  
   <header id="header-content" class="site-header" role="banner">
     <div class="wrapper">
       <a class="site-title" rel="author" href="/">
@@ -144,7 +145,7 @@
 
 <p>Unzip CKWebSpeech in CKEditor plugins directory.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>js/ckeditor/plugins
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>js/ckeditor/plugins
 ├── ckwebspeech
 │   ├── dialogs
 │   │   └── ckwebspeech.js
@@ -159,7 +160,7 @@
 ...
 </code></pre></div></div>
 
-<p>Edit CKEditor <code class="highlighter-rouge">config.js</code> file, add the following code lines below</p>
+<p>Edit CKEditor <code class="language-plaintext highlighter-rouge">config.js</code> file, add the following code lines below</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// See toolbar documentation</span>
 <span class="c1">// https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html</span>
@@ -191,7 +192,7 @@ by default starts with English-United States (en-us)
 
 <h2 id="command-trigger-usage">Command-Trigger usage:</h2>
 
-<p>Say short sentences, when CKWebSpeech detects command-trigger (<code class="highlighter-rouge">okay</code>) followed by some action, CKWebSpeech do not write the sentece instead it will execute the action (Undo, Redo, etc…)</p>
+<p>Say short sentences, when CKWebSpeech detects command-trigger (<code class="language-plaintext highlighter-rouge">okay</code>) followed by some action, CKWebSpeech do not write the sentece instead it will execute the action (Undo, Redo, etc…)</p>
 
 <p>e.g. If you express something like this:</p>
 
@@ -199,9 +200,9 @@ by default starts with English-United States (en-us)
   <p>Luke ‘okay new line’ I’m your father</p>
 </blockquote>
 
-<p><code class="highlighter-rouge">CKWebSpeech</code> will replace <code class="highlighter-rouge">okay new line</code> and the result will showed into CKEditor by the following way:</p>
+<p><code class="language-plaintext highlighter-rouge">CKWebSpeech</code> will replace <code class="language-plaintext highlighter-rouge">okay new line</code> and the result will showed into CKEditor by the following way:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Luke
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Luke
 I'm your father
 </code></pre></div></div>
 

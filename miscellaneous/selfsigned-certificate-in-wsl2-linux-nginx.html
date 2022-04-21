@@ -62,6 +62,7 @@
   
 </head>
 <body cz-shortcut-listen="true">
+  
   <header id="header-content" class="site-header" role="banner">
     <div class="wrapper">
       <a class="site-title" rel="author" href="/">
@@ -117,7 +118,6 @@
     - <a href="/staff/ultranaco">Alejandro Piña</a>
   
 </p>
-
 <p>A self-signed certificate is used when you need create local environments to build websites or applications that needs a hostname with SSL/TLS connection whithout CA authorities</p>
 
 <h2 id="how-to">How To</h2>
@@ -125,9 +125,9 @@
 <h3 id="prerequisites">Prerequisites</h3>
 
 <ul>
-  <li><code class="highlighter-rouge">Install OpenSSL</code></li>
-  <li><code class="highlighter-rouge">Install Nginx</code></li>
-  <li><code class="highlighter-rouge">Install Chrome/Chromium/Edge</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Install OpenSSL</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Install Nginx</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Install Chrome/Chromium/Edge</code></li>
 </ul>
 
 <h2 id="create-crt-and-key-files-with-openssl">Create CRT and KEY files with OpenSSL</h2>
@@ -145,7 +145,7 @@ openssl req <span class="nt">-x509</span> <span class="nt">-newkey</span> rsa:40
 <span class="nt">-addext</span> <span class="s2">"subjectAltName=DNS:local.ultranaco.com"</span>
 </code></pre></div></div>
 
-<p>Copy certificate and key file into <code class="highlighter-rouge">ssl</code> folder</p>
+<p>Copy certificate and key file into <code class="language-plaintext highlighter-rouge">ssl</code> folder</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo cp </span>local.ultranaco.com.crt /etc/ssl/certs/local.ultranaco.com.crt
 <span class="nb">sudo cp </span>local.ultranaco.com.key /etc/ssl/private/local.ultranaco.com.key
@@ -153,17 +153,17 @@ openssl req <span class="nt">-x509</span> <span class="nt">-newkey</span> rsa:40
 
 <h2 id="raise-a-local-application-with-custom-hostname-in-nginx">Raise a local application with custom hostname in Nginx</h2>
 
-<p>Creating application with <code class="highlighter-rouge">Hello World</code> message</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~
+<p>Creating application with <code class="language-plaintext highlighter-rouge">Hello World</code> message</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~
 mkdir myapplication
 cd myapplication
 echo "Hello World" &gt; index.html
 </code></pre></div></div>
-<p>Creating configuration file to serve <code class="highlighter-rouge">index.html</code> on the port <code class="highlighter-rouge">443</code> with custom hostname</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/nginx/sites-available
+<p>Creating configuration file to serve <code class="language-plaintext highlighter-rouge">index.html</code> on the port <code class="language-plaintext highlighter-rouge">443</code> with custom hostname</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/nginx/sites-available
 sudo touch local.ultranaco.com.site
 </code></pre></div></div>
-<p>File contents <code class="highlighter-rouge">local.ultranaco.com.site</code></p>
+<p>File contents <code class="language-plaintext highlighter-rouge">local.ultranaco.com.site</code></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server <span class="o">{</span>
         listen 443 ssl http2<span class="p">;</span>
         server_name local.ultranaco.com<span class="p">;</span>
@@ -181,24 +181,24 @@ sudo touch local.ultranaco.com.site
         <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
-<p>Enabling application with <code class="highlighter-rouge">symlink</code> file</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ../sites-enabled
+<p>Enabling application with <code class="language-plaintext highlighter-rouge">symlink</code> file</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ../sites-enabled
 sudo ln -s /etc/nginx/sites-available/local.ultranaco.com.site local.ultranaco.com.site
 sudo service nginx restart
 </code></pre></div></div>
-<p>Append the below text line into <code class="highlighter-rouge">/etc/hosts</code> file for linux, if you are working on windows with <strong>WSL2</strong> <code class="highlighter-rouge">/Windows/System32/drivers/etc/hosts</code> file</p>
+<p>Append the below text line into <code class="language-plaintext highlighter-rouge">/etc/hosts</code> file for linux, if you are working on windows with <strong>WSL2</strong> <code class="language-plaintext highlighter-rouge">/Windows/System32/drivers/etc/hosts</code> file</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1    local.ultranaco.com
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1    local.ultranaco.com
 </code></pre></div></div>
 
 <h2 id="make-certificate-trusted">Make certificate trusted</h2>
-<p>Open your application with Chrome/Chromium/Edge with the following url <code class="highlighter-rouge">https://local.ultranaco.com</code>, you´ll see and error related with the certificate.</p>
+<p>Open your application with Chrome/Chromium/Edge with the following url <code class="language-plaintext highlighter-rouge">https://local.ultranaco.com</code>, you´ll see and error related with the certificate.</p>
 
-<p>To fix the error you need to export certificate with extension <code class="highlighter-rouge">.cer</code></p>
+<p>To fix the error you need to export certificate with extension <code class="language-plaintext highlighter-rouge">.cer</code></p>
 
 <p><img src="/assets/images/misc/selfsignedworking2.png" alt="Make certificate trusted" title="Capture certificate with chrome" /></p>
 
-<p>Go to Settings and search <code class="highlighter-rouge">Manage Certificates</code> to import your certificate with extension <code class="highlighter-rouge">.cer</code></p>
+<p>Go to Settings and search <code class="language-plaintext highlighter-rouge">Manage Certificates</code> to import your certificate with extension <code class="language-plaintext highlighter-rouge">.cer</code></p>
 
 <p><img src="/assets/images/misc/selfsignedworking3.png" alt="Trusted Root Certification Authorities" title="Capture Immport Trusted Certificates" /></p>
 

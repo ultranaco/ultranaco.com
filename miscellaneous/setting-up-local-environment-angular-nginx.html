@@ -62,6 +62,7 @@
   
 </head>
 <body cz-shortcut-listen="true">
+  
   <header id="header-content" class="site-header" role="banner">
     <div class="wrapper">
       <a class="site-title" rel="author" href="/">
@@ -117,15 +118,14 @@
     - <a href="/staff/ultranaco">Alejandro Piña</a>
   
 </p>
-
 <p>Configure an Angular application with custom domain to dev environment, it is useful for configure Google Tag Manager or Google Analytics, testing events or tags before to spread on production environment, just for mention the most valuable thing for me, surely you will find other advantages</p>
 
 <h3 id="prerequisites">Prerequisites</h3>
 
 <ul>
-  <li>Install <code class="highlighter-rouge">angular-cli</code></li>
-  <li>Install <code class="highlighter-rouge">nginx</code></li>
-  <li>Install VS Code extension <code class="highlighter-rouge">Debugger for Chrome</code></li>
+  <li>Install <code class="language-plaintext highlighter-rouge">angular-cli</code></li>
+  <li>Install <code class="language-plaintext highlighter-rouge">nginx</code></li>
+  <li>Install VS Code extension <code class="language-plaintext highlighter-rouge">Debugger for Chrome</code></li>
 </ul>
 
 <h2 id="creating-angular-application-and-run">Creating angular application and run</h2>
@@ -136,11 +136,11 @@
 ng serve <span class="nt">--host</span> local.sudoku.ultranaco.com <span class="nt">--port</span> 4200
 </code></pre></div></div>
 
-<p><strong>Note:</strong> to make searcheable in browser(Chrome, Edge, Firefox, …) append your custom domain in file <code class="highlighter-rouge">/etc/hosts</code> if you are using WSL2 add in <code class="highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code></p>
+<p><strong>Note:</strong> to make searcheable in browser(Chrome, Edge, Firefox, …) append your custom domain in file <code class="language-plaintext highlighter-rouge">/etc/hosts</code> if you are using WSL2 add in <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code></p>
 
 <h2 id="configuring-site-in-nginx">Configuring site in Nginx</h2>
 
-<p><code class="highlighter-rouge">/etc/nginx/sites-available/local.sudoku.ultranaco.com</code></p>
+<p><code class="language-plaintext highlighter-rouge">/etc/nginx/sites-available/local.sudoku.ultranaco.com</code></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream sudoku <span class="o">{</span>
   <span class="c">#Listen when 'ng serve' command is running</span>
   server local.sudoku.ultranaco.com:8081<span class="p">;</span>
@@ -195,7 +195,7 @@ server <span class="o">{</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>Make sure that this configuration has a <code class="highlighter-rouge">symlink</code> in <code class="highlighter-rouge">/etc/nginx/sites-enabled/local.sudoku.ultranaco.com</code></p>
+<p>Make sure that this configuration has a <code class="language-plaintext highlighter-rouge">symlink</code> in <code class="language-plaintext highlighter-rouge">/etc/nginx/sites-enabled/local.sudoku.ultranaco.com</code></p>
 
 <p>Restart <strong>nginx</strong></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service nginx restart
@@ -205,7 +205,7 @@ server <span class="o">{</span>
 
 <h2 id="debugging-angular-in-vscode-with-wsl2">Debugging Angular in VSCode with WSL2</h2>
 
-<p><code class="highlighter-rouge">~/my-project/.vscode/launch.json</code></p>
+<p><code class="language-plaintext highlighter-rouge">~/my-project/.vscode/launch.json</code></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
@@ -222,7 +222,7 @@ server <span class="o">{</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Press <code class="highlighter-rouge">F5</code> to launch debugger for chrome</p>
+<p>Press <code class="language-plaintext highlighter-rouge">F5</code> to launch debugger for chrome</p>
 
 <p><img src="/assets/images/misc/angulardebug.png" alt="Debug angular in VS Code" title="Debug angular in VS Code" /></p>
 
