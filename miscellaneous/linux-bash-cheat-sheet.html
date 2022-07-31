@@ -9,42 +9,56 @@
   
     
 
-<title>Ultranaco Labs | Ultranaco is a personal website with tools, tips and tricks to make software more less effective</title>
-<meta property="og:title" content="Ultranaco Labs">
+
+
+
+
+
+
+<title>Linux Bash Cheat Sheet</title>
+<meta property="og:title" content="Linux Bash Cheat Sheet">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<meta property="og:description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<link rel="canonical" href="https://ultranaco.com/miscellaneous.html">
-<meta property="og:url" content="https://ultranaco.com/miscellaneous.html">
+<meta name="description" content="There is a common tasks working with linux bash basic commands
+">
+<meta property="og:description" content="There is a common tasks working with linux bash basic commands
+">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/linux-bash-cheat-sheet">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/linux-bash-cheat-sheet">
 <meta property="og:site_name" content="Ultranaco Labs">
-<meta property=”og:image” content=”https://ultranaco.com/assets/images/cover_ultranaco.png” />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/linux-cheat-sheet.jpg" />
 
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Blog",
-  "name": "Ultranaco Labs | Blog",
-  "url": "https://ultranaco.com/miscellaneous.html",
-  "description": "Ultranaco is a personal website with tools, tips and tricks to make software more less effective",
-  "sameAs": [
-    "https://facebook.com/ultranaco",
-    "https://github.com/ultranaco",
-    "https://twitter.com/ultranacomx"
-  ],
-  "publisher": {
-  "@type": "Organization",
-  "name": "Ultranaco Labs"
-}
-}
-</script>
-
-
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "author": "Alejandro Piña",
+      "datePublished": "31 Jul 2022",
+      "dateModified": "31 Jul 2022",
+      "headline": "Linux Bash Cheat Sheet",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover/linux-cheat-sheet.jpg",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
   
   <meta property="og:site_name" content="Ultranaco Labs">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://ultranaco.com/miscellaneous.html">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/linux-bash-cheat-sheet">
   <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
   <link rel="stylesheet" href="/assets/css/main.css">
+  
+    <script data-ad-client="ca-pub-4613358534686268" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
 </head>
 <body cz-shortcut-listen="true">
@@ -96,37 +110,27 @@
     <div class="wrapper">
       <div class="content">
         
-        <ul class="post-list">  
+        <h1>Linux Bash Cheat Sheet</h1>
+<p>
+  31 Jul 2022
   
-  <li>
-    <span class="post-meta">04 Jul 2020</span>
-    <h3><a class="post-link" href="/miscellaneous/man-in-the-proxy">Man In The Proxy</a></h3>
-    <p>I really didn’t know how to headline this article so after give it turns and more turns I concluded that this technique should be called Man in The Proxy from Man in The Middle technique but on a global scale</p>
+  
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
+  
+</p>
+<p>There is a common tasks working with linux bash basic commands</p>
 
-  </li>
-  
-  <li>
-    <span class="post-meta">26 Sep 2020</span>
-    <h3><a class="post-link" href="/miscellaneous/selfsigned-certificate-in-wsl2-linux-nginx">Selfsigned Certificate In Wsl2 Linux Nginx</a></h3>
-    <p>A self-signed certificate is used when you need create local environments to build websites or applications that needs a hostname with SSL/TLS connection whithout CA authorities</p>
+<h2 id="groups-and-users">Groups and Users</h2>
 
-  </li>
-  
-  <li>
-    <span class="post-meta">01 Feb 2021</span>
-    <h3><a class="post-link" href="/miscellaneous/setting-up-local-environment-angular-nginx">Setting Up Local Environment Angular Nginx</a></h3>
-    <p>Configure an Angular application with custom domain to dev environment, it is useful for configure Google Tag Manager or Google Analytics, testing events or tags before to spread on production environment, just for mention the most valuable thing for me, surely you will find other advantages</p>
+<p>List all users and his primary groups</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/passwd
+</code></pre></div></div>
+<p>Show user identifier his groups and groups belongs to</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id </span>myuser
+</code></pre></div></div>
 
-  </li>
-  
-  <li>
-    <span class="post-meta">31 Jul 2022</span>
-    <h3><a class="post-link" href="/miscellaneous/linux-bash-cheat-sheet">Linux Bash Cheat Sheet</a></h3>
-    <p>There is a common tasks working with linux bash basic commands</p>
 
-  </li>
-  
-</ul>
+
 
       </div>
 
@@ -172,6 +176,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3S9D4J');</script>
+  <!-- End Google Tag Manager -->
 
 </body>
 </html>
