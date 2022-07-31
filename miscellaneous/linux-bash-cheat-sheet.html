@@ -199,7 +199,52 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-tf</span> mycompressfile.tar.gz
 </code></pre></div></div>
+<h2 id="zip-files-compression">ZIP files compression</h2>
 
+<p>Compress folder</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-r</code> recursively</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="nb">cd </span>target_folder <span class="o">&amp;&amp;</span> zip <span class="nt">-r</span> ../target_file.zip .<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Uncompress zip file</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-d</code> directory path</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip compressfile.zip <span class="nt">-d</span> ./
+</code></pre></div></div>
+
+<h2 id="navigation">Navigation</h2>
+
+<p>Show directory structure</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-I</code> exclude pattern (optional)</li>
+  <li><code class="language-plaintext highlighter-rouge">-P</code> include pattern (optional)</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tree <span class="nt">-I</span> <span class="s1">'bin|obj'</span> <span class="nt">-P</span> <span class="s1">'*.cs'</span>
+</code></pre></div></div>
+
+<p>Find file recursively</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find ./ <span class="nt">-name</span> <span class="s2">"[filename.ext]"</span>
+</code></pre></div></div>
+
+<p>Find file pattern and delete</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"myfile*"</span> <span class="nt">-type</span> f <span class="nt">-delete</span>
+</code></pre></div></div>
+
+<p>Find contents in files recursively</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-rnw</span> <span class="s1">'target_folder'</span> <span class="nt">-e</span> <span class="s1">'target_content'</span>
+</code></pre></div></div>
+
+<h2 id="networking">Networking</h2>
+
+<p>Show listenting ports</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>lsof <span class="nt">-i</span> <span class="nt">-P</span> <span class="nt">-n</span> | <span class="nb">grep </span>LISTEN
+</code></pre></div></div>
 
 
 
