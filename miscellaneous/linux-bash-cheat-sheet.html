@@ -141,32 +141,32 @@
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-a</code> append</li>
   <li><code class="language-plaintext highlighter-rouge">-G</code> working with suplementary group</li>
-  <li><code class="language-plaintext highlighter-rouge">-g</code> working with primary group
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermod <span class="nt">-a</span> <span class="nt">-G</span> mygroup1,mygroup2 mysuser
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">-g</code> working with primary group</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermod <span class="nt">-a</span> <span class="nt">-G</span> mygroup1,mygroup2 mysuser
+</code></pre></div></div>
 
 <h2 id="permissions">Permissions</h2>
 
 <p>Change owner recursively</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-R</code> recursively</li>
-  <li><code class="language-plaintext highlighter-rouge">:mygroup</code> optional group, the default is primary group
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> myuser:mygroup myfolder
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">:mygroup</code> optional group, the default is primary group</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> myuser:mygroup myfolder
+</code></pre></div></div>
 
 <p>Add or remove permissions</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-R</code> recursively</li>
   <li><code class="language-plaintext highlighter-rouge">u</code>=user, <code class="language-plaintext highlighter-rouge">g</code>=group, <code class="language-plaintext highlighter-rouge">o</code>=others and <code class="language-plaintext highlighter-rouge">a</code>=everyone</li>
-  <li><code class="language-plaintext highlighter-rouge">+/-</code> add or remove, <code class="language-plaintext highlighter-rouge">w</code>=write, <code class="language-plaintext highlighter-rouge">r</code>=read, <code class="language-plaintext highlighter-rouge">x</code>=execution
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> g+w myfolder
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">+/-</code> add or remove, <code class="language-plaintext highlighter-rouge">w</code>=write, <code class="language-plaintext highlighter-rouge">r</code>=read, <code class="language-plaintext highlighter-rouge">x</code>=execution</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> g+w myfolder
+</code></pre></div></div>
 
 <h2 id="compress-uncompress">Compress uncompress</h2>
 
@@ -175,11 +175,11 @@
   <li><code class="language-plaintext highlighter-rouge">-c</code> create an archive</li>
   <li><code class="language-plaintext highlighter-rouge">-z</code> compress with gzip</li>
   <li><code class="language-plaintext highlighter-rouge">-v</code> display progress</li>
-  <li><code class="language-plaintext highlighter-rouge">-f</code> allow specify file name
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-czvf</span> mycompressfile.tar.gz /source/path
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">-f</code> allow specify file name</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-czvf</span> mycompressfile.tar.gz /source/path
+</code></pre></div></div>
 
 <p>Uncompress by tar file</p>
 <ul>
@@ -194,11 +194,11 @@
 <p>Read contents in tar file</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-t</code> list</li>
-  <li><code class="language-plaintext highlighter-rouge">-f</code> allow specify file name
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-tf</span> mycompressfile.tar.gz
-</code></pre></div>    </div>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">-f</code> allow specify file name</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-tf</span> mycompressfile.tar.gz
+</code></pre></div></div>
 
 
 
