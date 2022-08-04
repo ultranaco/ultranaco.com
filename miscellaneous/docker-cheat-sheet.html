@@ -15,30 +15,30 @@
 
 
 
-<title>Git Cheat Sheet</title>
-<meta property="og:title" content="Git Cheat Sheet">
+<title>Docker Cheat Sheet</title>
+<meta property="og:title" content="Docker Cheat Sheet">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Basic git commands that are used day to day
+<meta name="description" content="Basic docker command that are used day to day
 ">
-<meta property="og:description" content="Basic git commands that are used day to day
+<meta property="og:description" content="Basic docker command that are used day to day
 ">
-<link rel="canonical" href="https://ultranaco.com/miscellaneous/git-cheat-sheet">
-<meta property="og:url" content="https://ultranaco.com/miscellaneous/git-cheat-sheet">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/docker-cheat-sheet">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/docker-cheat-sheet">
 <meta property="og:site_name" content="Ultranaco Labs">
 <meta property="og:type" content="article" />
-<meta property="og:image" content="https://ultranaco.com/assets/images/cover/git-cheat-sheet.jpg" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/docker-cheat-sheet.jpg" />
 
 <script type="application/ld+json">{
     "@context": "https://schema.org",
       "@type": "BlogPosting",
       "author": "Alejandro Piña",
-      "datePublished": "01 Aug 2022",
-      "dateModified": "01 Aug 2022",
-      "headline": "Git Cheat Sheet",
+      "datePublished": "04 Aug 2022",
+      "dateModified": "04 Aug 2022",
+      "headline": "Docker Cheat Sheet",
       "mainEntityOfPage": "True",
       "image": {
         "@type": "imageObject",
-        "url": "https://ultranaco.com/assets/images/cover/git-cheat-sheet.jpg",
+        "url": "https://ultranaco.com/assets/images/cover/docker-cheat-sheet.jpg",
         "height": "628",
         "width": "1200"
       },
@@ -54,7 +54,7 @@
   
   <meta property="og:site_name" content="Ultranaco Labs">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://ultranaco.com/miscellaneous/git-cheat-sheet">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/docker-cheat-sheet">
   <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
   <link rel="stylesheet" href="/assets/css/main.css">
   
@@ -110,58 +110,82 @@
     <div class="wrapper">
       <div class="content">
         
-        <h1>Git Cheat Sheet</h1>
+        <h1>Docker Cheat Sheet</h1>
 <p>
-  01 Aug 2022
+  04 Aug 2022
   
   
     - <a href="/staff/ultranaco">Alejandro Piña</a>
   
 </p>
-<p>Basic git commands that are used day to day</p>
+<p>Basic docker command that are used day to day</p>
 
-<h2 id="branches-graph">Branches Graph</h2>
+<h2 id="working-with-images">Working with images</h2>
 
-<p>View graph with basic information including commit short ID</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--all</span> <span class="nt">--decorate</span> <span class="nt">--online</span> <span class="nt">--graph</span>
-</code></pre></div></div>
-
-<p>You can wrap graph command in a short command with an alias e.g.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"alias gitgraph='git log --all --decorate --oneline --graph'"</span> <span class="o">&gt;&gt;</span> ~/.bash_aliases
-</code></pre></div></div>
-
-<h2 id="working-with-commits">Working with commits</h2>
-
-<p>Revert changes</p>
+<p>Build a docker image from a given docker file</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">--soft</code> reverts changes to stagging area</li>
-  <li><code class="language-plaintext highlighter-rouge">--mixed</code> reverts changes to working directory preserving modifications</li>
-  <li><code class="language-plaintext highlighter-rouge">--hard</code> reverts changes including modifications</li>
+  <li><code class="language-plaintext highlighter-rouge">-f</code> name of docker file</li>
+  <li><code class="language-plaintext highlighter-rouge">-t</code> name and tag</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--soft</span> &lt;commit_short_id&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build - t <span class="o">[</span>image_scope/image_name:tag] <span class="nt">-f</span> <span class="o">[</span>Dockerfile] <span class="nb">.</span> <span class="nt">--no-cache</span>
 </code></pre></div></div>
 
-<p>Reorganizes current branch commits after HEAD <code class="language-plaintext highlighter-rouge">&lt;branch_name&gt;</code>, make sure that you fetched your braches before this operation</p>
+<p>Images list</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset &lt;branch_name&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker images
 </code></pre></div></div>
 
-<h2 id="logs">Logs</h2>
+<p>Delete an image</p>
 
-<p>Shows information about the commit like modifications and author</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git show &lt;commit_short_id&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi <span class="o">[</span>image_scope/image_name:tag]
 </code></pre></div></div>
 
-<p>Shows who mades the modifications line by line</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">-L</code> shows part of the content <code class="language-plaintext highlighter-rouge">&lt;from,to&gt;</code></li>
-</ul>
+<p>Export an image</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git blame &lt;filename&gt; <span class="nt">-L</span> 0,10
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker save <span class="o">[</span>image_scope/image_name:tag] | <span class="nb">gzip</span> <span class="o">&gt;</span> <span class="o">[</span>compressed_image.tar.gz]
+</code></pre></div></div>
+
+<p>Tag an image before that be published
+‘Note:’ review format targe before push to AWS</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker tag <span class="o">[</span><span class="nb">source</span><span class="o">]</span>:latest <span class="o">[</span>target]:latest
+</code></pre></div></div>
+
+<h2 id="working-with-containers">Working with containers</h2>
+
+<p>Container list</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps <span class="nt">-a</span>
+</code></pre></div></div>
+
+<p>Run a container from a given image</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 8080:80 <span class="nt">--name</span> <span class="o">[</span>container_name] <span class="o">[</span>image_name]
+</code></pre></div></div>
+
+<p>Stop/Start a container</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stop <span class="o">[</span>container_name]
+docker start <span class="o">[</span>container_name]
+</code></pre></div></div>
+
+<p>Delete a container</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker conatiner <span class="nb">rm</span> <span class="o">[</span>container_name]
+</code></pre></div></div>
+
+<h2 id="working-with-docker-and-aws">Working with Docker and AWS</h2>
+
+<p>AWS docker login</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws ecr get-login-password <span class="nt">--region</span> <span class="o">[</span>region] | docker login <span class="nt">--username</span> AWS <span class="nt">--password-stdin</span> <span class="o">[</span>aws_account_id.dkr.ecr.region.amazonaws.com]
+</code></pre></div></div>
+
+<p>Upload an image to AWS ECR</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push aws_account_id.dkr.ecr.region.amazonaws.com/[target]:[tag]
 </code></pre></div></div>
 
 
