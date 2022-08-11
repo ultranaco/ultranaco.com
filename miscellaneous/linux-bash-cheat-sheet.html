@@ -126,7 +126,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/passwd
 </code></pre></div></div>
 
-<p>Show user identifier his groups and groups belongs to</p>
+<p>Shows user identifier, its groups and groups belongs to</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id </span>myuser
 </code></pre></div></div>
 
@@ -134,7 +134,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/group
 </code></pre></div></div>
 
-<p>Show who is a member  of a group</p>
+<p>Shows who is a member of a group</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getent group mygroup
 </code></pre></div></div>
 <p>Append, add or remove primary/sumplemetary groups</p>
@@ -149,7 +149,7 @@
 
 <h2 id="permissions">Permissions</h2>
 
-<p>Change owner recursively</p>
+<p>Changes owner recursively</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-R</code> recursively</li>
   <li><code class="language-plaintext highlighter-rouge">:mygroup</code> optional group, the default is primary group</li>
@@ -158,7 +158,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> myuser:mygroup myfolder
 </code></pre></div></div>
 
-<p>Add or remove permissions</p>
+<p>Adds or remove permissions</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-R</code> recursively</li>
   <li><code class="language-plaintext highlighter-rouge">u</code>=user, <code class="language-plaintext highlighter-rouge">g</code>=group, <code class="language-plaintext highlighter-rouge">o</code>=others and <code class="language-plaintext highlighter-rouge">a</code>=everyone</li>
@@ -191,7 +191,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xvf</span> myfcompressfile.tar.gz
 </code></pre></div></div>
 
-<p>Read contents in tar file</p>
+<p>Reads content in tar file</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-t</code> list</li>
   <li><code class="language-plaintext highlighter-rouge">-f</code> allow specify file name</li>
@@ -219,7 +219,7 @@
 
 <h2 id="navigation">Navigation</h2>
 
-<p>Show directory structure</p>
+<p>Shows directory structure</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">-I</code> exclude pattern (optional)</li>
   <li><code class="language-plaintext highlighter-rouge">-P</code> include pattern (optional)</li>
@@ -232,17 +232,17 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find ./ <span class="nt">-name</span> <span class="s2">"[filename.ext]"</span>
 </code></pre></div></div>
 
-<p>Find file pattern and delete</p>
+<p>Finds file pattern and delete</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"myfile*"</span> <span class="nt">-type</span> f <span class="nt">-delete</span>
 </code></pre></div></div>
 
-<p>Find contents in files recursively</p>
+<p>Finds content in files recursively</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-rnw</span> <span class="s1">'target_folder'</span> <span class="nt">-e</span> <span class="s1">'target_content'</span>
 </code></pre></div></div>
 
 <h2 id="networking">Networking</h2>
 
-<p>Show listenting ports</p>
+<p>Shows listenting ports</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>lsof <span class="nt">-i</span> <span class="nt">-P</span> <span class="nt">-n</span> | <span class="nb">grep </span>LISTEN
 </code></pre></div></div>
 
