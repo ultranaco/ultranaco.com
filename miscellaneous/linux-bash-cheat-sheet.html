@@ -240,6 +240,11 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-rnw</span> <span class="s1">'target_folder'</span> <span class="nt">-e</span> <span class="s1">'target_content'</span>
 </code></pre></div></div>
 
+<p>Rename files recursively</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"*.txt"</span> | rename <span class="s1">'s/.txt/.html/'</span>
+</code></pre></div></div>
+
 <h2 id="networking">Networking</h2>
 
 <p>Shows listenting ports</p>
