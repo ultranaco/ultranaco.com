@@ -7,39 +7,58 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    <title>Ultranaco Labs | Sharing knwoledge to control complexity</title>
+    
 
-<meta property="og:title" content="Ultranaco Labs">
+
+
+
+
+
+
+<title>Aws Cli Cheat Sheet</title>
+<meta property="og:title" content="Aws Cli Cheat Sheet">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<meta property="og:description" content="Ultranaco is a personal website with tools, tips and tricks to make software more less effective">
-<link rel="canonical" href="Ultranaco Labs">
-<meta property="og:url" content="https://ultranaco.com">
+<meta name="description" content="Basic AWS CLI bash commands used day to day
+">
+<meta property="og:description" content="Basic AWS CLI bash commands used day to day
+">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/aws-cli-cheat-sheet">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/aws-cli-cheat-sheet">
 <meta property="og:site_name" content="Ultranaco Labs">
-<meta property=”og:image” content=”https://ultranaco.com/assets/images/cover_ultranaco.png” />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/aws-cheat-sheet.jpg" />
 
-<script type="application/ld+json">
-  {
-    "@type":"WebSite",
-    "url":"https://ultranaco.com",
-    "headline":"Ultranaco Labs",
-    "description":"Ultranaco is a personal website with tools, tips and tricks to make software more less effective",
-    "name":"Ultranaco Labs",
-    "sameAs": [
-      "https://facebook.com/ultranaco",
-      "https://github.com/ultranaco",
-      "https://twitter.com/ultranacomx"
-      ],
-    "@context":"https://schema.org"
-  }
-</script>
-
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "author": "Alejandro Piña",
+      "datePublished": "05 Mar 2023",
+      "dateModified": "05 Mar 2023",
+      "headline": "Aws Cli Cheat Sheet",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover/aws-cheat-sheet.jpg",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
   
   <meta property="og:site_name" content="Ultranaco Labs">
   <meta property="og:locale" content="en_US">
-  <link rel="canonical" href="https://ultranaco.com/">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/aws-cli-cheat-sheet">
   <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
   <link rel="stylesheet" href="/assets/css/main.css">
+  
+    <script data-ad-client="ca-pub-4613358534686268" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
 </head>
 <body cz-shortcut-listen="true">
@@ -71,7 +90,7 @@
   
   <div class="trigger">
   <a href="/miscellaneous" 
-  class="page-link " >
+  class="page-link page-link-current" >
     Miscellaneous
   </a>
 </div>
@@ -91,61 +110,27 @@
     <div class="wrapper">
       <div class="content">
         
-        <h1 id="ultranaco-labs">Ultranaco Labs</h1>
-
-<h2 id="latest-documents">Latest Documents</h2>
-
-<ul class="post-list">  
+        <h1>Aws Cli Cheat Sheet</h1>
+<p>
+  05 Mar 2023
   
-  <li>
-    <span class="post-meta">05 Mar 2023</span>
-    <h3><a class="post-link" href="/miscellaneous/aws-cli-cheat-sheet">Aws Cli Cheat Sheet</a></h3>
-    <p>Basic AWS CLI bash commands used day to day</p>
-
-  </li>
   
-  <li>
-    <span class="post-meta">12 Aug 2022</span>
-    <h3><a class="post-link" href="/miscellaneous/nodejs-cheat-sheet">Nodejs Cheat Sheet</a></h3>
-    <p>Basic nodejs commands that are used in my day to day</p>
-
-  </li>
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
   
-  <li>
-    <span class="post-meta">04 Aug 2022</span>
-    <h3><a class="post-link" href="/miscellaneous/docker-cheat-sheet">Docker Cheat Sheet</a></h3>
-    <p>Basic docker commands that are used day to day</p>
+</p>
+<p>Basic AWS CLI bash commands used day to day</p>
 
-  </li>
-  
-</ul>
+<h2 id="cloudformation">Cloudformation</h2>
 
-<h2 id="latest-projects">Latest Projects</h2>
+<p>Create/Delete/Update stack</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws cloudformation delete-stack <span class="nt">--stack-name</span> <span class="o">[</span>name_of_stack]
 
-<ul class="post-list">  
-  
-  <li>
-    <span class="post-meta">16 Aug 2020</span>
-    <h3><a class="post-link" href="/briefcase/semaphorelock-csharp">Semaphorelock Csharp</a></h3>
-    <p><code class="language-plaintext highlighter-rouge">SemaphoreLock</code> class is a module to lock execution by tag name with cocurrent degree allowing execute code simultaneusly.</p>
+aws cloudformation create-stack <span class="nt">--stack-name</span> depovs-tools <span class="nt">--template-body</span> file:///home/user/my/stack/path/[name_of_stack].yml <span class="nt">--capabilities</span> CAPABILITY_NAMED_IAM
 
-  </li>
-  
-  <li>
-    <span class="post-meta">19 Jul 2020</span>
-    <h3><a class="post-link" href="/briefcase/parallel-js">Parallel Js</a></h3>
-    <p><code class="language-plaintext highlighter-rouge">Parallel</code> is a Node.js library to spread concurrent task or promises, with deggree concurrency</p>
+aws cloudformation update-stack <span class="nt">--stack-name</span> depovs-tools <span class="nt">--template-body</span> file:///home/user/my/stack/path/[name_of_stack].yml
+</code></pre></div></div>
+<p><em><strong>Note: CAPABILITY_NAMED_IAM</strong> and <strong>CAPABILITY_IAM</strong> are used if iam resources were define in stack</em></p>
 
-  </li>
-  
-  <li>
-    <span class="post-meta">11 May 2020</span>
-    <h3><a class="post-link" href="/briefcase/mockcat">Mockcat</a></h3>
-    <p>Just another mock server but this one is chingon. Mockcat is a command line application to raise a http server from any file type also allow make CRUD operations with JSON file that contains an array of elements or one element at root</p>
-
-  </li>
-  
-</ul>
 
 
       </div>
@@ -192,6 +177,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3S9D4J');</script>
+  <!-- End Google Tag Manager -->
 
 </body>
 </html>
