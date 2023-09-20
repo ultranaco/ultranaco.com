@@ -1,0 +1,233 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/assets/images/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    
+
+
+
+
+
+
+
+<title>Use External Drive Postgresql Docker Wsl2</title>
+<meta property="og:title" content="Use External Drive Postgresql Docker Wsl2">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Using a docker postgresql image with external drive in WSL2.
+">
+<meta property="og:description" content="Using a docker postgresql image with external drive in WSL2.
+">
+<link rel="canonical" href="https://ultranaco.com/miscellaneous/use-external-drive-postgresql-docker-wsl2">
+<meta property="og:url" content="https://ultranaco.com/miscellaneous/use-external-drive-postgresql-docker-wsl2">
+<meta property="og:site_name" content="Ultranaco Labs">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://ultranaco.com/assets/images/cover/docker-cheat-sheet.jpg" />
+
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "author": "Alejandro Piña",
+      "datePublished": "20 Sep 2023",
+      "dateModified": "20 Sep 2023",
+      "headline": "Use External Drive Postgresql Docker Wsl2",
+      "mainEntityOfPage": "True",
+      "image": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/cover/docker-cheat-sheet.jpg",
+        "height": "628",
+        "width": "1200"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ultranaco Labs",
+        "logo": {
+        "@type": "imageObject",
+        "url": "https://ultranaco.com/assets/images/logo_ultranaco.png"
+      }
+    }
+  }</script>
+  
+  <meta property="og:site_name" content="Ultranaco Labs">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://ultranaco.com/miscellaneous/use-external-drive-postgresql-docker-wsl2">
+  <link type="application/atom+xml" rel="alternate" href="https://ultranaco.com" title="Ultranaco Labs">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+    <script data-ad-client="ca-pub-4613358534686268" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+</head>
+<body cz-shortcut-listen="true">
+  
+  <header id="header-content" class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" rel="author" href="/">
+        <img class="logo-ultranaco" src="/assets/images/logo_ultranaco.png" alt="">
+      </a>
+      <nav class="site-nav">
+  <input type="checkbox" id="nav-trigger" class="nav-trigger">
+  <label for="nav-trigger">
+    <span class="menu-icon">
+      <svg viewBox="0 0 18 15" width="18px" height="15px">
+        <path
+          d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z">
+        </path>
+      </svg>
+    </span>
+  </label>
+
+  
+  <div class="trigger">
+  <a href="/briefcase" 
+  class="page-link " >
+    Briefcase
+  </a>
+</div>
+  
+  <div class="trigger">
+  <a href="/miscellaneous" 
+  class="page-link page-link-current" >
+    Miscellaneous
+  </a>
+</div>
+  
+  <div class="trigger">
+  <a href="/about" 
+  class="page-link " >
+    About
+  </a>
+</div>
+  
+</nav>
+
+    </div>
+  </header>
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="content">
+        
+        <h1>Use External Drive Postgresql Docker Wsl2</h1>
+<p>
+  20 Sep 2023
+  
+  
+    - <a href="/staff/ultranaco">Alejandro Piña</a>
+  
+</p>
+<p>Using a docker postgresql image with external drive in WSL2.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+  <li>Docker PostreSQL container</li>
+  <li>WSL2 installed</li>
+  <li>External drive connected</li>
+</ul>
+
+<p>Make sure that your external drive has a format ext4 and mounted in WSL2 if you external drive has other format follow the next steps to create a new partition to be used as ext4</p>
+
+<h3 id="create-a-partition-file">Create a partition file</h3>
+
+<p>The partition file is going to make with a block size of 4 KiB multiplied by count parameters in the following example is the equivalent to 1 Terabyte</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/mnt/d/ext4_01.img <span class="nv">bs</span><span class="o">=</span>4K <span class="nv">count</span><span class="o">=</span>268435456 <span class="nv">status</span><span class="o">=</span>progress
+
+</code></pre></div></div>
+
+<h3 id="format-the-file">Format the file</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext4 /mnt/d/ext4_01.img
+</code></pre></div></div>
+
+<h3 id="create-a-mount-point-in-wsl">Create a mount point in WSL</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> /mnt/ext4_ext
+</code></pre></div></div>
+
+<h3 id="mount-the-new-partition">Mount the new partition</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>mount <span class="nt">-o</span> loop /mnt/d/ext4_01.img /mnt/ext4_ext
+</code></pre></div></div>
+
+<h3 id="give-permission-to-your-user">Give permission to your user</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown</span> <span class="nv">$USER</span>:<span class="nv">$USER</span> /mnt/ext4_ext
+</code></pre></div></div>
+
+<h3 id="create-a-folder-to-save-your-databases">Create a folder to save your databases</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> /mnt/ext4_ext/postgres_data
+</code></pre></div></div>
+
+<h3 id="create-and-run-your-postgres-image-using-your-new-partition">Create and run your postgres image using your new partition</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
+    <span class="nt">--name</span> db-postgres-data <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mypassword <span class="se">\</span>
+    <span class="nt">-v</span> /mnt/ext4_ext/postgres_data:/var/lib/postgresql/data <span class="se">\</span>
+    <span class="nt">-p</span> 5432:5432 <span class="se">\</span>
+    postgres
+
+</code></pre></div></div>
+
+
+
+
+      </div>
+
+    </div>
+  </main>
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+
+    <div class="wrapper">
+
+      <h2 class="footer-heading">Ultranaco Labs</h2>
+
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Ultranaco Labs</li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col-2">
+          <ul class="social-media-list">
+            <li><a target="_blank" href="https://github.com/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#github"></use>
+                </svg> <span class="username">ultranaco</span></a></li>
+            <li><a target="_blank" href="https://twitter.com/ultranacomx"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#twitter"></use>
+                </svg> <span class="username">ultranacomx</span></a></li>
+            <li><a target="_blank" href="https://facebook.com/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#facebook"></use>
+                </svg> <span class="username">@ultranaco</span></a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/ultranaco"><svg class="svg-icon">
+                  <use xlink:href="/assets/images/minima-social-icons.svg#linkedin"></use>
+                </svg> <span class="username">ultranaco</span></a></li>
+            <li><a target="_blank" href="https://npmjs.com/~ultranaco">
+              <img class="svg-icon" src="/assets/images/npm.jpg">
+              <span class="username">~ultranaco</span></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-col-3">
+          <p>Sharing knwoledge to control complexity</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3S9D4J');</script>
+  <!-- End Google Tag Manager -->
+
+</body>
+</html>
